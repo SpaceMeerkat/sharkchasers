@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Shark Chasers</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<link rel="shortcut icon" href="{{ url_for('static', filename='tabicon.png') }}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+
+<!-- Navbar (sit on top) -->
+<div class="w3-top">
+  <div class="w3-bar w3-white w3-wide w3-padding w3-card">
+    <a href="/" class="w3-bar-item w3-button">SHARK CHASERS</a> 
+    <!-- Float links to the right. Hide them on small screens -->
+    <div class="w3-right w3-hide-small">
+      <a href="#about" class="w3-bar-item w3-button"><i class="fa fa-youtube-play" style="font-size:48;color:red"></i> YouTube</a>
+      <a href="#about" class="w3-bar-item w3-button">About</a>
+      <a href="sharkfiles" class="w3-bar-item w3-button">Shark-Files</a>
+      <a href="map" class="w3-bar-item w3-button">Map</a>
+      <a href="#contact" class="w3-bar-item w3-button">Contact</a>
+    </div>
+  </div>
+</div>
+
+<div class="w3-content" style="max-width:1920px">
+
+<!-- Image header -->
+<header class="w3-display-container w3-wide" id="home">
+  <img class="w3-image" src="/static/home_image.jpg" width="1920" height="1060">
+  <div class="w3-display-left w3-padding-large">
+    <h1 class="w3-jumbo w3-text-black w3-hide-small"><b>Shark Chasers</b></h1>
+    <h6><button class="w3-button w3-red w3-padding-large w3-large w3-hover-opacity-off">SUBSCRIBE</button></h6>
+  </div>
+</header>
+  
+</div>
+
+</body>
+
+</html> 

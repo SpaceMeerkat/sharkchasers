@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Shark Chasers</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<link rel="shortcut icon" href="{{ url_for('static', filename='tabicon.png') }}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+
+<!-- Navbar (sit on top) -->
+<div class="w3-top">
+  <div class="w3-bar w3-white w3-wide w3-padding w3-card">
+    <a href="/" class="w3-bar-item w3-button">SHARK CHASERS</a> 
+    <!-- Float links to the right. Hide them on small screens -->
+    <div class="w3-right w3-hide-small">
+      <a href="#about" class="w3-bar-item w3-button"><i class="fa fa-youtube-play" style="font-size:48;color:red"></i> YouTube</a>
+      <a href="#about" class="w3-bar-item w3-button">About</a>
+      <a href="sharkfiles" class="w3-bar-item w3-button">Shark-Files</a>
+      <a href="map" class="w3-bar-item w3-button">Map</a>
+      <a href="#contact" class="w3-bar-item w3-button">Contact</a>
+    </div>
+  </div>
+</div>
+
+<div style="width: 1920px; height: 100px; background-color: #FFFFFF;"></div>
+
+<div class="centered-text">
+        <h1>Sharks found: 0/30</h1>
+</div>
+
+<div style="width: 1920px; height: 30px; background-color: #FFFFFF;"></div>
+
+<div class="w3-content" style="max-width:1600px">
+
+<div class="card-grid">
+    <!-- Images will be dynamically added here by JavaScript -->
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const sharkCards = {{ contents | safe }};
+    const cardGrid = document.querySelector('.card-grid');
+
+    // Loop through each card path and create image elements
+    Object.values(sharkCards).forEach(cardPath => {
+        const img = document.createElement('img');
+        img.src = cardPath;
+        img.alt = 'Card'; // Set alt text for accessibility
+        img.classList.add('card-image'); // Add a class to the image
+        cardGrid.appendChild(img);
+    });
+});
+</script>
+
+</body>
+
+</html>
