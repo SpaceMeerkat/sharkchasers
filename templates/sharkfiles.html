@@ -26,34 +26,113 @@
   </div>
 </div>
 
+<!-- Centered text box with close button -->
+<div class="w3-modal" id="myModal">
+    <div class="w3-modal-content">
+        <span class="close">&times;</span>
+        <p><b>Welcome to the Shark-Files page!</b> <br><br>
+        Dive into the world of sharks with our digital collection of 30 cards from the classic Top Trumps 2001 Sharks edition.
+        <br><br>
+        Hover over the cards to discover if these amazing creatures have been caught on video yet.
+        <br><br>
+        Ready for an adventure? Click on the cards to unveil thrilling YouTube videos capturing these encounters and explore their spotted locations on our world map page!
+        </p>
+
+    </div>
+</div>
+
 <div style="width: 1920px; height: 100px; background-color: #FFFFFF;"></div>
 
 <div class="centered-text">
-        <h1>Sharks found: 0/30</h1>
+        <h1 id="sharkCount">Sharks found: 0/30</h1>
 </div>
 
 <div style="width: 1920px; height: 30px; background-color: #FFFFFF;"></div>
 
 <div class="w3-content" style="max-width:1600px">
 
-<div class="card-grid">
-    <!-- Images will be dynamically added here by JavaScript -->
-</div>
+<!-- Your existing image container -->
+<div class="card-grid"></div>
+
+<!-- Add a container for the hovered text -->
+<div id="hoveredText"></div>
+
 
 <script>
+
+// Get the modal and close button elements
+const modal = document.getElementById('myModal');
+const closeButton = document.querySelector('.close');
+
+// Function to display the modal
+function showModal() {
+    modal.style.display = 'block';
+}
+
+// Function to close the modal
+function closeModal() {
+    modal.style.display = 'none';
+}
+
+// Event listener for clicking on the close button
+closeButton.addEventListener('click', closeModal);
+
+// Show the modal when the page loads
+document.addEventListener('DOMContentLoaded', showModal);
+
 document.addEventListener("DOMContentLoaded", function() {
-    const sharkCards = {{ contents | safe }};
+    const sharkData = {{ contents | safe }};
+    const sharkStatus = sharkData.status;
+
+    const observedCount = sharkStatus.filter(status => status === 'observed').length;
+    const totalCount = sharkStatus.length;
+
+    const sharkCountElement = document.getElementById('sharkCount');
+    sharkCountElement.textContent = `Sharks found: ${observedCount}/${totalCount}`;
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+    const sharkData = {{ contents | safe }};
+    const sharkCards = sharkData.urls;
+    const sharkStatus = sharkData.status;
     const cardGrid = document.querySelector('.card-grid');
 
-    // Loop through each card path and create image elements
-    Object.values(sharkCards).forEach(cardPath => {
+    // Create and append images
+    Object.values(sharkCards).forEach((cardPath, index) => {
+        const imgContainer = document.createElement('div');
+        imgContainer.classList.add('card-image-container');
+        
         const img = document.createElement('img');
         img.src = cardPath;
         img.alt = 'Card'; // Set alt text for accessibility
         img.classList.add('card-image'); // Add a class to the image
-        cardGrid.appendChild(img);
+        
+        const statusText = document.createElement('h1');
+        statusText.classList.add('hovered-status');
+        statusText.textContent = sharkStatus[index];
+        statusText.style.display = 'none'; // Initially hide the text
+        
+        imgContainer.appendChild(img);
+        imgContainer.appendChild(statusText);
+        cardGrid.appendChild(imgContainer);
+        
+        img.addEventListener('mouseenter', () => {
+            statusText.textContent = sharkStatus[index];
+            if (sharkStatus[index] === 'observed') {
+                statusText.style.color = 'green';
+            } else if (sharkStatus[index] === 'unobserved') {
+                statusText.style.color = 'red';
+            }
+            statusText.style.display = 'block'; // Show text on hover
+        });
+
+        img.addEventListener('mouseleave', () => {
+            statusText.style.display = 'none'; // Hide text on mouse leave
+        });
     });
 });
+
+
 </script>
 
 </body>

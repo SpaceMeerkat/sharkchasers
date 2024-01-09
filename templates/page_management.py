@@ -15,8 +15,15 @@ bp = Blueprint('pages', __name__, url_prefix='/')
 def sharkfiles_landing():
     cards_path = "/home/jdawson/repos/sharkweb/static/cards/"
     shark_cards = ["cards/"+f for f in listdir(cards_path)]
+    
+    shark_card_names = [shark_cards[k].split("/")[1].split(".")[0] for k in range(len((shark_cards)))]
     shark_card_urls = [url_for("static", filename=i) for i in shark_cards]
-    shark_cards_dict = {v: k for v, k in enumerate(shark_card_urls)}
+    shark_card_status = ["unobserved"] * len(shark_card_names)
+    
+    shark_cards_dict = {"names":shark_card_names,
+                        "urls":shark_card_urls,
+                        "status":shark_card_status}
+    
     return render_template('sharkfiles.html', contents=shark_cards_dict)
 
 @bp.route("map")
