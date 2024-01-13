@@ -96,6 +96,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const sharkCards = sharkData.urls;
     const sharkStatus = sharkData.status;
     const cardGrid = document.querySelector('.card-grid');
+    const giturl = "https://github.com/SpaceMeerkat/sharkchasers/blob/main/static/cards/"
 
     // Create and append images
     Object.values(sharkCards).forEach((cardPath, index) => {
@@ -103,7 +104,8 @@ document.addEventListener("DOMContentLoaded", function() {
         imgContainer.classList.add('card-image-container');
         
         const img = document.createElement('img');
-        img.src = cardPath;
+        img.src = giturl + cardPath;
+        console.log("Image URL:", giturl + cardPath);
         img.alt = 'Card'; // Set alt text for accessibility
         img.classList.add('card-image'); // Add a class to the image
         
