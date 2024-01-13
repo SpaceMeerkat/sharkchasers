@@ -104,7 +104,7 @@ document.addEventListener("DOMContentLoaded", function() {
         imgContainer.classList.add('card-image-container');
         
         const img = document.createElement('img');
-        img.src = giturl + cardPath;
+        img.src = giturl + cardPath + "?raw=true";
         console.log("Image URL:", giturl + cardPath);
         img.alt = 'Card'; // Set alt text for accessibility
         img.classList.add('card-image'); // Add a class to the image
