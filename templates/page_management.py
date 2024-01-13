@@ -11,6 +11,10 @@ from os import listdir
 
 bp = Blueprint('pages', __name__, url_prefix='/')
 
+@bp.route("about")
+def about_landing():
+    return render_template('about.html')
+
 @bp.route("sharkfiles")
 def sharkfiles_landing():
     cards_path = "/home/jdawson/repos/sharkweb/static/cards/"
