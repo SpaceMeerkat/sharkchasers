@@ -355,6 +355,16 @@ hr{border:0;border-top:1px solid #eee;margin:20px 0}
     margin-right: auto;
 }
 
+.section.left .floating-image {
+    position: absolute;
+    top: 0;
+    right: 300px; /* Adjust the distance as needed */
+    top: 105px;
+    border: 20px solid white; /* White border */
+    border-radius: 10px; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Drop shadow */
+}
+
 #about {
     position: relative;
     background-image: url('https://github.com/SpaceMeerkat/sharkchasers/blob/main/static/about_image.jpg?raw=true');
@@ -362,8 +372,8 @@ hr{border:0;border-top:1px solid #eee;margin:20px 0}
     background-position: center; /* Adjust as needed */
     padding-top: 50px; /* Adjust top padding as needed */
     padding-bottom: 10px; /* Adjust bottom padding as needed */
-    padding-left: 0px; /* Adjust left padding as needed */
-    padding-right: 0px; /* Adjust right padding as needed */
+    padding-left: 150px; /* Adjust left padding as needed */
+    padding-right: 150px; /* Adjust right padding as needed */
 }
 
 #about .section p {
