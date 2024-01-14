@@ -29,7 +29,12 @@ def sharkfiles_landing():
     
     shark_cards_dict = {"names":shark_card_names,
                         "urls":shark_card_urls,
-                        "status":shark_card_status}
+                        "status":shark_card_status,
+                        "species":[],
+                        "location":[],
+                        "operator":[],
+                        "depth":[],
+                        "about":[]}
     
     return render_template('sharkfiles.html', contents=shark_cards_dict)
 
