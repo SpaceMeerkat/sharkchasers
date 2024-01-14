@@ -357,7 +357,7 @@ hr{border:0;border-top:1px solid #eee;margin:20px 0}
 
 #about {
     position: relative;
-    background-image: url('/static/about_image.jpg');
+    background-image: url('https://github.com/SpaceMeerkat/sharkchasers/blob/main/static/about_image.jpg?raw=true');
     background-size: cover; /* Adjust as needed */
     background-position: center; /* Adjust as needed */
     padding-top: 50px; /* Adjust top padding as needed */
